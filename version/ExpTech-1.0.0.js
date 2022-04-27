@@ -43,7 +43,7 @@ async function messageCreate(client, message) {
 }
 
 async function load(client) {
-    if (await DB.read(Plugin,"channelID")!=false&&await DB.read(Plugin, "channelID") != null) {
+    if (await DB.read(Plugin, "channelID") != false && await DB.read(Plugin, "channelID") != null) {
         let channels = await client.channels.cache.get(await DB.read(Plugin, "channelID"))
         let MSG = await channels.messages.fetch(await DB.read(Plugin, "messageID"))
         setInterval(async () => {
@@ -52,17 +52,19 @@ async function load(client) {
             let times = Math.round(Json["Minutes"][11]["times"] / 60)
             let msg = `**ExpTech API 負載狀態**\n\n**近 5 分鐘 ${Json["Minutes"][11]["times"]}**\n`
             for (let index = 0; index < times; index++) {
+                if (index == 10) break
                 msg = msg + "🟥 "
             }
-            for (let index = 0; index < 5 - times; index++) {
+            for (let index = 0; index < 10 - times; index++) {
                 msg = msg + "🟩 "
             }
             times = Math.round(Json["Hours"][23]["times"] / 720)
             msg = msg + `\n\n**近 1 小時 ${Json["Hours"][23]["times"]}**\n`
             for (let index = 0; index < times; index++) {
+                if (index == 10) break
                 msg = msg + "🟥 "
             }
-            for (let index = 0; index < 5 - times; index++) {
+            for (let index = 0; index < 10 - times; index++) {
                 msg = msg + "🟩 "
             }
             MSG.edit(await pluginLoader.embed(msg))
