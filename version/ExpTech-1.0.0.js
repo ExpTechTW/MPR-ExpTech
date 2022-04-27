@@ -43,7 +43,7 @@ async function messageCreate(client, message) {
 }
 
 async function load(client) {
-    if (await DB.read(Plugin, "channelID") != null) {
+    if (await DB.read(Plugin,"channelID")!=false&&await DB.read(Plugin, "channelID") != null) {
         let channels = await client.channels.cache.get(await DB.read(Plugin, "channelID"))
         let MSG = await channels.messages.fetch(await DB.read(Plugin, "messageID"))
         setInterval(async () => {
