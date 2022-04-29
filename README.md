@@ -1,9 +1,9 @@
-# 模板
+# MPR-ExpTech
 <img alt="Discord" src="https://img.shields.io/discord/926545182407688273">
 
 ------
 
-- 這是一個 ExpTech Github 模板
+- MPR 的 ExpTech API 即時負載顯示 插件
 
 ## 索引
 - [貢獻者](#貢獻者)
